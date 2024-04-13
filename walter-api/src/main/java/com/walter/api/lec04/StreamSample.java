@@ -1,6 +1,7 @@
 package com.walter.api.lec04;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamSample {
@@ -15,10 +16,10 @@ public class StreamSample {
 	private static void takeWhileSample() {
 		final List<Integer> takeWhileSample = NUMERICS.stream()
 													  .takeWhile(num -> num <= 10)
-													  .toList();
+													  .collect(Collectors.toList());
 		final List<Integer> filterSample = NUMERICS.stream()
 												   .filter(num -> num <= 10)
-												   .toList();
+												   .collect(Collectors.toList());
 		System.out.println("validate takeWhile : " + (takeWhileSample.size() == 2));
 		System.out.println("validate filter : " + (filterSample.size() == 3));
 		takeWhileSample.forEach(System.out::println);
@@ -27,7 +28,7 @@ public class StreamSample {
 	private static void dropWhileSample() {
 		final List<Integer> dropWhileSample = NUMERICS.stream()
 													  .dropWhile(num -> num <= 10)
-													  .toList();
+													  .collect(Collectors.toList());
 		dropWhileSample.forEach(System.out::println);
 		System.out.println("validate dropWhile : " + (dropWhileSample.size() == 3));
 	}
