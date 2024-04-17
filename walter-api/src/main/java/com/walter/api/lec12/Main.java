@@ -1,5 +1,9 @@
 package com.walter.api.lec12;
 
+import com.walter.api.lec12._switch.pattern.Animal;
+import com.walter.api.lec12._switch.pattern.Cat;
+import com.walter.api.lec12._switch.pattern.Dog;
+
 public class Main {
 	record Point(double x, double y) {}
 
@@ -17,6 +21,15 @@ public class Main {
 		}
 	}
 
+	public static String sound(Animal animal) {
+		return switch (animal) {
+			case Dog dog when dog.isQuite() -> "머엉...";
+			case Dog dog -> dog.bark();
+			case Cat cat -> cat.purr();
+			case null -> "널이네";
+		};
+	}
+
 	public static void main(String[] args) {
 		final Point p1 = new Point(2.2, 3.1);
 		findDistanceIfPoint(p1);
@@ -24,5 +37,11 @@ public class Main {
 		final Point p2 = new Point(4.2, 2.4);
 		final Line line = new Line(p1, p2);
 		findDistanceIfPoint(line);
+
+		final Dog dog = new Dog();
+		System.out.println(sound(dog));
+		System.out.println(sound(null));
+
+
 	}
 }
