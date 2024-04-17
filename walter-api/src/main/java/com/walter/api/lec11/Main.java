@@ -5,6 +5,8 @@ import com.walter.api.lec10.FruitDto;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
+import java.util.random.RandomGenerator;
+import java.util.random.RandomGeneratorFactory;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -42,5 +44,13 @@ public class Main {
 					return 0;
 				}
 			));
+
+		// Stream toList
+		List<Integer> priceList = fruits.stream()
+										.map(FruitDto::price)
+										.toList();
+
+		// JDK 17 Random Class
+		RandomGeneratorFactory.all().forEach(f -> System.out.println(f.name()));
 	}
 }
